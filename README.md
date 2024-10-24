@@ -39,12 +39,18 @@ Usage Example
     # Set up the destroy effect
     #destroy_update = animations.destroy(text_area, delay=0.1, pause_cycles=20)
 
+    # Create a text label
+    #text_area = animations.create_text("Glitching Text!", x=10, y=30)
+    # Set up the glitch2 effect with a pause of 20 cycles
+    #glitchmore_update = animations.glitchmore(text_area, steps=20, delay=0.1, pause_cycles=20, max_shift=2)
+
     # Main loop
     while True:
-        #fade_update() 		# works perfectly
-        glitch_update() 	# works perfectly
-        #matrix_update() 	# works perfectly
-        #destroy_update() 	# works perfectly
+        #fade_update()
+        glitch_update()
+        #matrix_update()
+        #destroy_update()
+        #glitchmore_update()
 
 ```
 
@@ -55,6 +61,7 @@ There are 4 effects so far:
 * matrix - this will create a matrix rain effect to make the text appear and disappear in a loop
 * glitch = this will glitch the text to make the text appear and disappear in a loop
 * destroy - this will remove / add characters until the text appears and disappears in a loop
+* glitchmore - similar to glitch but it also shifts the textbox around the screen
 Contributing
 ============
 
