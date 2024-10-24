@@ -253,4 +253,52 @@ class TextAnimations:
 
         return update_destroy
 
+    def glitchmore(self, text_area, steps=20, delay=0.1, pause_cycles=20, max_shift=5):
+        """Glitch effect that glitches both text characters and shifts its position, followed by a pause."""
+        import random
+        original_text = text_area.text
+        original_x = text_area.x
+        original_y = text_area.y
+        step = 0
+        max_glitch_rate = 0.3  # Adjust the rate at which characters are glitched
+        timer = Timer(delay)
+        pause_counter = 0  # Counter to handle pause phase
+
+        def update_glitchmore():
+            nonlocal step, max_glitch_rate, pause_counter
+
+            if timer.has_elapsed():
+                if step < steps:
+                    # Glitch phase: Randomly glitch the text and shift the position
+                    glitched_text = ''.join(
+                        random.choice([char, chr(random.randint(33, 126))]) for char in original_text
+                    )
+                    text_area.text = glitched_text
+
+                    # Randomly shift the text's position
+                    text_area.x = original_x + random.randint(-max_shift, max_shift)
+                    text_area.y = original_y + random.randint(-max_shift, max_shift)
+
+                    step += 1
+
+                else:
+                    # Pause phase: Display the original text at its original position
+                    text_area.text = original_text
+                    text_area.x = original_x
+                    text_area.y = original_y
+
+                    # Increment pause counter
+                    pause_counter += 1
+
+                    # If pause is done, reset to start glitching again
+                    if pause_counter >= pause_cycles:
+                        step = 0  # Reset glitch steps
+                        pause_counter = 0  # Reset pause counter
+                        max_glitch_rate = random.uniform(0.2, 0.4)  # Re-randomize glitch intensity
+
+                self.display.refresh()
+                timer.reset()  # Reset the timer for the next update
+
+        return update_glitchmore
+
  
