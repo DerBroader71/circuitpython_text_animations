@@ -56,7 +56,7 @@ Usage Example
 
 Uncomment / comment as appropriate
 
-There are 4 effects so far:
+There are 5 effects so far:
 * fade - this will fade the text in and out in a loop
 * matrix - this will create a matrix rain effect to make the text appear and disappear in a loop
 * glitch = this will glitch the text to make the text appear and disappear in a loop
